@@ -7,6 +7,7 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 project(ModRatings VERSION 1.0.0)
 file(GLOB_RECURSE SOURCES
     src/*.cpp
+    src/*.hpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
