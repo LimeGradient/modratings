@@ -1,14 +1,12 @@
 {
     "mods": [
         {
-            "geode.loader": {
-                "rating": 3
-            }
+            "id": "geode.loader",
+            "rating": 3
         },
         {
-            "dankmeme.globed2": {
-                "rating": 3
-            }
+            "id": "dankmeme.globed2",
+            "rating": 3
         }
     ]
 }

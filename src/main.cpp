@@ -5,14 +5,37 @@
 
 using namespace geode::prelude;
 
+enum Ratings {
+		EPIC,
+		MYTHIC,
+		LEGENDARY
+};
+
+class ModRating {
+public:
+	ModRating(std::string id, Ratings rate) {
+		this->modID = id;
+		this->rating = rate;
+	}
+
+protected:
+	std::string modID;
+	Ratings rating;
+};
+
 EventListener<web::WebTask> m_webListener;
+std::vector<ModRating> mods;
 
 $execute {
 	new EventListener<EventFilter<ModLogoUIEvent>>(+[](ModLogoUIEvent* event) {
 		m_webListener.bind([] (web::WebTask::Event* e) {
 			if (web::WebResponse* res = e->getValue()) {
                 if (res->ok()) {
-					auto json = res->json();
+					auto json = res->json().unwrap();
+					auto mods = json["mods"].as_array();
+					for (auto mod : mods) {
+						
+					}
 				}
             } else if (e->isCancelled()) {
                 log::info("The request was cancelled... So sad :(");
